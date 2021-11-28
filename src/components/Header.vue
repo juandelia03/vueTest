@@ -41,6 +41,11 @@ export default {
       this.isOpened = !this.isOpened;
     },
   },
+  mounted() {
+    if (localStorage.items) {
+      this.store.state.cart = JSON.parse(localStorage.items);
+    }
+  },
 };
 </script>
 

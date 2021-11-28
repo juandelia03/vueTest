@@ -1,7 +1,9 @@
 <template>
   <div class="item">
-    <p>{{ title }}</p>
-    <img :src="img" alt="" class="image" />
+    <div class="item-info">
+      <p>{{ title }}</p>
+      <img :src="img" alt="" class="image" />
+    </div>
     <img src="../assets/delete.png" alt="" class="dlt" @click="dlt" />
   </div>
 </template>
@@ -27,8 +29,7 @@ export default {
           this.store.state.cart.splice(i, 1);
         }
       });
-
-      //   this.store.state.cart.splice(i, 1);
+      localStorage.setItem("items", JSON.stringify(this.store.state.cart));
     },
   },
 };
@@ -46,11 +47,17 @@ export default {
 }
 .image {
   width: 100px;
+  margin-right: 20px;
 }
 .dlt {
   width: 32px;
   cursor: pointer;
   margin-left: auto;
   margin-right: 30px;
+}
+.item-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 </style>

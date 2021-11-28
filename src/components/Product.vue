@@ -41,6 +41,7 @@ export default {
         return;
       } else {
         this.store.state.cart.push(item);
+        localStorage.setItem("items", JSON.stringify(this.store.state.cart));
       }
     },
   },
