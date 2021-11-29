@@ -97,6 +97,9 @@ export default {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+.products-mobile {
+  display: none;
+}
 @media (max-width: 920px) {
   .products {
     display: none;
