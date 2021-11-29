@@ -7,13 +7,16 @@
       </div>
     </div>
     <div class="cart-content" v-if="isOpened">
-      <div class="box">
+      <div class="box" v-if="store.state.cart.length > 0">
         <CartItem
           v-for="item in store.state.cart"
           :key="item"
           :title="item.title"
           :img="item.img"
         />
+      </div>
+      <div class="box empty" v-else>
+        <h2>Your cart is empty</h2>
       </div>
     </div>
   </div>
@@ -80,5 +83,8 @@ export default {
 }
 .box::-webkit-scrollbar {
   display: none;
+}
+.empty {
+  padding-top: 50px;
 }
 </style>

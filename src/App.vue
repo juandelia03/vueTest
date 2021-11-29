@@ -15,6 +15,18 @@
             :discount="product.discount"
           />
         </div>
+        <div class="products-mobile">
+          <Product
+            :key="products[product].title"
+            :title="products[product].title"
+            :price="products[product].price"
+            :img="products[product].img"
+            :hasDiscount="products[product].hasDiscount"
+            :discount="products[product].discount"
+            @prev="prev"
+            @next="next"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -39,12 +51,28 @@ export default {
       products: [
         { title: "Mechanical keyboard", price: "1,122", img: require("@/assets/keyboard.jpg") },
         { title: "Headphones", price: "2,321", img: require("@/assets/headphones.jpg") },
-        { title: "Mechanical keyboard 2", price: "1,122", img: require("@/assets/keyboard.jpg") },
-        { title: "Mechanical keyboard 3", price: "1,122", img: require("@/assets/keyboard.jpg") },
+        { title: "Mouse", price: "500", img: require("@/assets/mouse.jpg") },
+        { title: "Web Cam", price: "300", img: require("@/assets/webcam.jpg") },
       ],
+      product: 0,
     };
   },
-  mounted() {},
+  methods: {
+    prev() {
+      if (this.product !== 0) {
+        this.product--;
+      } else {
+        this.product = this.products.length - 1;
+      }
+    },
+    next() {
+      if (this.product !== this.products.length - 1) {
+        this.product++;
+      } else {
+        this.product = 0;
+      }
+    },
+  },
 };
 </script>
 
@@ -71,12 +99,15 @@ export default {
 }
 @media (max-width: 920px) {
   .products {
-    justify-content: center;
+    display: none;
   }
   .section {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .products-mobile {
+    display: flex;
   }
 }
 </style>

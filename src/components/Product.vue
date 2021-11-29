@@ -1,7 +1,13 @@
 <template>
   <div class="product">
     <div class="image-wrap">
+      <div class="left-arrow" @click="$emit('prev')">
+        <img src="../assets/arrow.svg" alt="" />
+      </div>
       <img :src="img" class="main-image" />
+      <div class="right-arrow" @click="$emit('next')">
+        <img src="../assets/arrow.svg" alt="" />
+      </div>
     </div>
     <h3>{{ title }}</h3>
     <p class="price">${{ price }}</p>
@@ -69,5 +75,22 @@ export default {
 }
 .price {
   color: gray;
+}
+.right-arrow {
+  display: none;
+}
+.left-arrow {
+  display: none;
+}
+@media (max-width: 920px) {
+  .left-arrow {
+    margin-right: 30px;
+    display: flex;
+    transform: rotate(180deg);
+  }
+  .right-arrow {
+    margin-left: 30px;
+    display: flex;
+  }
 }
 </style>
